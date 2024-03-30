@@ -1,0 +1,59 @@
+<!--(Apllication using (AJAX))
+-->
+<html>
+<head>
+<!--3-create script-->
+<script type="text/javascript">
+//4-create function test(){
+function test(){
+//5-create var (xmlhttp;)
+var xmlhttp; //later this var wil have own value which is   (object xhtml request) automaticlly will pass this var (var xmlhttp) so, this var (var xmlhttp) will hold object
+//6-use if statement (need to use everytime we use AJAX Tequnic )because its prevent errors in script because in internet explorer(microsoft object) its equlevent to (xmlhttp request object) microsoft has in Internet Explorer6,Internet Explorer5 have equlevent to (xmlhttp request object) which is (active H object)
+//make sure that you use (firefox,chrome,opera,IE7)which support (xmlhttp request) OR if user use IE5,IE6 need to use(activeX object)
+//if window support xmlhttp request
+   if(window.XMLHttpRequest){
+  //use var name (xmlhttp)
+      xmlhttp = new XMLHttpRequest();
+//if not support (xmlhttp request) means user use IE5,IE6
+}else{
+//so create another object and use(activeX object)
+                           //this will create (activeX object)of microsoft
+xmlhttp = new ActiveXobject("Microsoft.XMLHTTP");
+}
+//7-Give(event handler) to (xmlhttp)var which is object  (xmlhttp request object)
+                            //function hold if condition, (xmlhttp request is complete) (we request information and receve information)                                      //
+							//Why we dont give name to function? because we are using function but we will not call function so we dont need name it,this function will calld automaticlly throw handler (onreadystatechange)
+xmlhttp.onreadystatechange = function(){   //(onreadystatechange):if there is any changes
+               //(readyState):propertey of (xmlhttp) or (object)
+//it means what is State rightnow of the request we have (5 Types of readyStates)we have 0,1,2,3,4		  0:means request not sent, 1:server connection is stablished, 2:request recived by server, 3:server process in the request, 4:request finished be processed and response is ready
+                         //4:browser ready to receive information
+//8-use another (if) if we ready to receive answer					                                                                            
+	if(xmlhttp.readyState==4){     //get id (result)    
+                                           //innerHTML:propertey to insert any thing to html to element(id result)    
+	                                                   //put in (id result) (xmlhttp.responseText)
+													           //response will get from server we sent request to server then we wait to get answer from server,that answer is string or number,.. it will store with responseText
+          document.getElementById('result').innerHTML= xmlhttp.responseText;
+   }
+}
+//9-use method(open) is method of (xmlhttp request object):
+            //same (PHP) you can use (GET) or (POST) to send to server ,use(POST) if you have large amount of data to send,(GET):use for small request
+			      //where we want to send information or request to
+				    //i will create text.txt and type something in it any answer will get will typed in text.txt
+                            //if you want sequence request:true,if you dont want sequence request:false
+							//we normally use (sequence) because its better for webpage so we type (true)
+xmlhttp.open("GET","3-text.txt",true);
+//10 use method to send request
+xmlhttp.send();
+}
+
+</script>
+</head>
+<body>
+<!--1-create button-->
+      <input type="button" onclick="" /></br>
+<!--2-create div-->
+	  <div id="resul">Result...</div>
+	  
+
+</body>
+</html>
